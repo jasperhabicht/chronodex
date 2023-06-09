@@ -1,0 +1,23 @@
+\documentclass[border=10pt, tikz]{standalone}
+\usetikzlibrary{chronodex}
+
+\begin{document}
+\begin{tikzpicture} 
+    \pic {chronodex={date=2023-06-08, 24 hours, 
+        tick middle code={
+            (0:\pgfkeysvalueof{/tikz/chronodex/tick middle start}) node[circle, inner sep=1.25pt, fill=cyan] {}
+        },
+        base ring/.append style={cyan, very thick},
+        base segments/.append style={cyan!10},
+        primary ring/.append style={cyan, thick},
+        primary tick/.append style={magenta!50},
+        secondary tick/.append style={cyan},
+        segment 6 to 7 am/.append style={magenta!25},
+        segment 7 to 8 am/.append style={magenta!15},
+        segment 8 to 9 am/.append style={magenta!5},
+        segment 9 to 10 pm/.append style={magenta!25},
+        segment 10 to 11 pm/.append style={magenta!15},
+        segment 11 pm to 12 am/.append style={magenta!5},
+        label/.append style={magenta, font=\sffamily}}};
+\end{tikzpicture} 
+\end{document}
