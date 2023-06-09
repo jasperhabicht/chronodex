@@ -1,3 +1,13 @@
+% Copyright 2023 by Jasper Habicht
+%
+% This file may be distributed and/or modified
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+% This is version v1.1 (2023-06-09)
+%
+\ProvidesFileRCS{tikzlibrarychronodex.code.tex}
+%
 \usetikzlibrary{calendar}
 \newcount\chronodex@currentdate
 \newcount\chronodex@currentweekday
@@ -81,19 +91,19 @@
                 \foreach \n in {7.5,15,22.5} {
                     \foreach \t/\a in {4/0, 5/30, 6/60} {
                         \tikzset{chronodex/tick bottom start={3}}
-                        \draw[rotate={\b-\a-\n}, chronodex/primary tick]
+                        \path[rotate={\b-\a-\n}, chronodex/primary tick]
                             \pgfkeysvalueof{/tikz/chronodex/tick bottom code};
                         \tikzset{chronodex/tick top start={\t}}
-                        \draw[rotate={\b-\a-\n}, chronodex/primary tick]
+                        \path[rotate={\b-\a-\n}, chronodex/primary tick]
                             \pgfkeysvalueof{/tikz/chronodex/tick top code};
                     }
                     \tikzset{chronodex/tick middle start={4}}
-                    \draw[rotate={\b-30-\n}, chronodex/secondary tick]
+                    \path[rotate={\b-30-\n}, chronodex/secondary tick]
                         \pgfkeysvalueof{/tikz/chronodex/tick middle code};
-                    \draw[rotate={\b-60-\n}, chronodex/secondary tick]
+                    \path[rotate={\b-60-\n}, chronodex/secondary tick]
                         \pgfkeysvalueof{/tikz/chronodex/tick middle code};
                     \tikzset{chronodex/tick middle start={5}}
-                    \draw[rotate={\b-60-\n}, chronodex/secondary tick]
+                    \path[rotate={\b-60-\n}, chronodex/secondary tick]
                         \pgfkeysvalueof{/tikz/chronodex/tick middle code};
                 }
                 \ifnum\a=0\relax
@@ -174,22 +184,17 @@
     chronodex/base ring/.style={
         thick,
     },
-    chronodex/base segments/.style={
-        white!0,
-    },
     chronodex/primary ring/.style={
         thick,
-    },
-    chronodex/primary tick/.style={
     },
     chronodex/secondary ring/.style={
         gray,
     },
+    chronodex/primary tick/.style={
+        draw
+    },
     chronodex/secondary tick/.style={
-        circle,
-        fill,
-        gray,
-        inner sep=1.25pt,
+        draw
     },
     chronodex/inner ring/.style={
         gray,
@@ -202,12 +207,12 @@
         gray,
         densely dashed,
     },
+    chronodex/outer line/.style={
+        gray,
+    },
     chronodex/additional ring/.style={
         gray,
         densely dotted,
-    },
-    chronodex/outer line/.style={
-        gray,
     },
     chronodex/label/.style={
         font=\footnotesize,
@@ -223,6 +228,9 @@
         chronodex/label,
         gray,
     },
+    chronodex/base segments/.style={
+        white!0,
+    },
     chronodex/segment 6 to 7 am/.style={
         gray!25,
     },
@@ -233,13 +241,13 @@
         gray!5,
     },
     chronodex/segment 9 to 10 pm/.style={
-        white!0,
+        gray!25,
     },
     chronodex/segment 10 to 11 pm/.style={
-        white!0,
+        gray!15,
     },
     chronodex/segment 11 pm to 12 am/.style={
-        white!0,
+        gray!5,
     },
     chronodex/day/.style={
         anchor=south,
@@ -249,4 +257,4 @@
         anchor=north,
         font=\large,
     },
-}
+}%
