@@ -1,4 +1,6 @@
 % Copyright 2023 by Jasper Habicht
+% "Chronodex", Chronodex ideas and notations are
+% Copyright Patrick Ng
 %
 % This file may be distributed and/or modified
 % 1. under the LaTeX Project Public License and/or
@@ -15,6 +17,12 @@
     pics/chronodex/.style={
         code={
             \tikzset{chronodex/.cd, #1}
+            % coordinates
+            \coordinate (-center) at (0:0);
+            \coordinate (-east) at (0:6);
+            \coordinate (-north) at (90:6);
+            \coordinate (-west) at (180:6);
+            \coordinate (-south) at (270:6);
             % inner segments
             \fill[chronodex/segment 6 to 7 am]
                 (270:3) arc[start angle=270, end angle=240, radius=3] --
