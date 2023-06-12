@@ -1,6 +1,6 @@
 % Copyright 2023 by Jasper Habicht
 % "Chronodex", Chronodex ideas and notations are
-% Copyright Patrick Ng
+% Copyright 2023 by Patrick Ng
 %
 % This file may be distributed and/or modified
 % 1. under the LaTeX Project Public License and/or
@@ -40,12 +40,12 @@
                     (\i:3) -- (\i:2);
                 \pgfmathparse{int(\a > 0 && \a < 7 ? 1 : 0)}
                 \ifnum\pgfmathresult=1\relax
-                    \node[rotate={\i}, anchor=south east, chronodex/inner label]
+                    \node[rotate={\i}, chronodex/label east semicircle, chronodex/inner label]
                         at (\i:3) {\a\pgfkeysvalueof{/tikz/chronodex/am suffix}};
                 \fi
                 \pgfmathparse{int(\a > 6 && \a < 9 ? 1 : 0)}
                 \ifnum\pgfmathresult=1\relax
-                    \node[rotate={\i-180}, anchor=south west, chronodex/inner label]
+                    \node[rotate={\i-180}, chronodex/label west semicircle, chronodex/inner label]
                         at (\i:3) {\a\pgfkeysvalueof{/tikz/chronodex/am suffix}};
                 \fi
             }
@@ -67,7 +67,7 @@
                     (\o:7) -- (\o:6);
                 \ifnum\p<3\relax
                     \pgfmathsetmacro{\h}{int(\p+9+\pgfkeysvalueof{/tikz/chronodex/24 hours conversion})}
-                    \node[rotate={\o-180}, anchor=south west, chronodex/outer label]
+                    \node[rotate={\o-180}, chronodex/label west semicircle, chronodex/outer label]
                         at (\o:7) {\h\pgfkeysvalueof{/tikz/chronodex/pm suffix}};
                 \fi
             }
@@ -115,31 +115,31 @@
                         \pgfkeysvalueof{/tikz/chronodex/tick middle code};
                 }
                 \ifnum\a=0\relax
-                    \node[rotate={\b-180}, anchor=south west, chronodex/base label]
+                    \node[rotate={\b-180}, chronodex/label west semicircle, chronodex/base label]
                         at (\b:4) {9\pgfkeysvalueof{/tikz/chronodex/am suffix}};
-                    \node[rotate={\b-210}, anchor=south west, chronodex/base label]
+                    \node[rotate={\b-210}, chronodex/label west semicircle, chronodex/base label]
                         at ({\b-30}:5) {10\pgfkeysvalueof{/tikz/chronodex/am suffix}};
-                    \node[rotate={\b-240}, anchor=south west, chronodex/base label]
+                    \node[rotate={\b-240}, chronodex/label west semicircle, chronodex/base label]
                         at ({\b-60}:6) {11\pgfkeysvalueof{/tikz/chronodex/am suffix}};
-                    \node[rotate={\b-270}, anchor=south west, chronodex/base label]
+                    \node[rotate={\b-270}, chronodex/label west semicircle, chronodex/base label]
                         at ({\b-90}:6) {12\pgfkeysvalueof{/tikz/chronodex/noon suffix}};
                 \else
                     \ifnum\a=3\relax
                         \pgfmathsetmacro{\h}{int(\a*3-2+\pgfkeysvalueof{/tikz/chronodex/24 hours conversion})}
-                        \node[rotate={\b-210}, anchor=south west, chronodex/base label]
+                        \node[rotate={\b-210}, chronodex/label west semicircle, chronodex/base label]
                             at ({\b-30}:5) {\h\pgfkeysvalueof{/tikz/chronodex/pm suffix}};
                         \pgfmathsetmacro{\h}{int(\a*3-1+\pgfkeysvalueof{/tikz/chronodex/24 hours conversion})}
-                        \node[rotate={\b-240}, anchor=south west, chronodex/base label]
+                        \node[rotate={\b-240}, chronodex/label west semicircle, chronodex/base label]
                             at ({\b-60}:6) {\h\pgfkeysvalueof{/tikz/chronodex/pm suffix}};
                     \else
                         \pgfmathsetmacro{\h}{int(\a*3-2+\pgfkeysvalueof{/tikz/chronodex/24 hours conversion})}
-                        \node[rotate={\b-30}, anchor=south east, chronodex/base label]
+                        \node[rotate={\b-30}, chronodex/label east semicircle, chronodex/base label]
                             at ({\b-30}:4) {\h\pgfkeysvalueof{/tikz/chronodex/pm suffix}};
                         \pgfmathsetmacro{\h}{int(\a*3-1+\pgfkeysvalueof{/tikz/chronodex/24 hours conversion})}
-                        \node[rotate={\b-60}, anchor=south east, chronodex/base label]
+                        \node[rotate={\b-60}, chronodex/label east semicircle, chronodex/base label]
                             at ({\b-60}:5) {\h\pgfkeysvalueof{/tikz/chronodex/pm suffix}};
                         \pgfmathsetmacro{\h}{int(\a*3+\pgfkeysvalueof{/tikz/chronodex/24 hours conversion})}
-                        \node[rotate={\b-90}, anchor=south east, chronodex/base label]
+                        \node[rotate={\b-90}, chronodex/label east semicircle, chronodex/base label]
                             at ({\b-90}:6) {\h\pgfkeysvalueof{/tikz/chronodex/pm suffix}};
                     \fi
                 \fi
@@ -224,6 +224,12 @@
     },
     chronodex/label/.style={
         font=\footnotesize,
+    },
+    chronodex/label east semicircle/.style={
+        anchor=south east,
+    },
+    chronodex/label west semicircle/.style={
+        anchor=south west,
     },
     chronodex/base label/.style={
         chronodex/label,
